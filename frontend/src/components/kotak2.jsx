@@ -1,7 +1,7 @@
 function Kotak2(){
    return(
     <>
-    <h1>kotak2 dari komponen</h1>
+    <h1 className="kotak1">kotak2 dari komponen</h1>
     </>
    );
 };

@@ -23,8 +23,8 @@ import Kotak2 from "./components/kotak2";
 function App() {
   return (
     <>
-      <h1>hello</h1>
-      <Kotak1/>
+      <h1 className="warna">hello</h1>
+      <Kotak1 />
       <Kotak2/>
     </>
   );
