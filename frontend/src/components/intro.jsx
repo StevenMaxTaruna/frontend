@@ -1,4 +1,6 @@
 import React from 'react'
+import Perusahaan from '../perusahaan';
+
 
 function Intro() {
   return (
@@ -6,7 +8,7 @@ function Intro() {
       <div className="container">
       <h1 className='display-2'>Cinema Kita</h1>
       <h3 className='display-4'>Nonton Film Gratis</h3>
-      <button className='mt-5 btn btn-warning btn-lg'>Click Selengkapnya</button>
+      <a className='mt-5 btn btn-warning btn-lg' href='{Perusahaan}'>Informasi TEntang Kami</a>
       </div>
     </div>
   )
