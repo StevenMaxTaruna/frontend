@@ -17,3 +17,27 @@
     background: #2d2d2d;
     color: #ffffff;
 }
+
+.intro{
+    height: 100vh;
+    background-image: url('../assets/images/bg/main.webp');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.trending{
+    background-image: url('../assets/images/trending/trending.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+.superhero{
+    background-image: url('../assets/images/superhero/superhero.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.tombol{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+}

@@ -5,7 +5,7 @@ function Card(){
      <>
         <div className="d-flex flex-row  ">
         <div class="card my-5 me-3" style={{width: '18rem'}}>
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        <img src={reactLogo} className="logo react p-3" alt="React logo" />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -19,7 +19,7 @@ function Card(){
             </div>
         </div>
         <div class="card my-5 me-3" style={{width: '18rem'}}>
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        <img src={reactLogo} className="logo react p-3" alt="React logo" />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -33,7 +33,7 @@ function Card(){
             </div>
         </div>
         <div class="card my-5 me-3" style={{width: '18rem'}}>
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        <img src={reactLogo} className="logo react p-3" alt="React logo" />
             <div class="card-body">
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
