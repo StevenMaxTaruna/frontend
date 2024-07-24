@@ -1,42 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anime</title>
+    @livewireStyles  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        .kotak{
-            margin: a uto;
-            text-align: center;
-            width: 500px;
-            height: 200px;
-            border: 8px solid rgb(31, 4, 4);
-            color: rgb(230, 221, 235);
-            font-size: 70px;
-        }
-        .red{
-            background: red;
-        }
-        .yellow{
-            background: yellow;
-        }
-        .blue{
-            background: blue;
-        }
+       body{
+        background:url('images/anime1.jpg');
+        background-attachment:fixed;
+        background-size:cover;
+       }
     </style>
-    @livewireStyles
+    
 </head>
-<body>
-    {{-- @livewire('header') --}}
-    <br>
-    @livewire('kotak1')
-    <br>
-    @livewire('main')
-    <br>
-    @livewire('kotak2')
-    <br>
+  <body>
     {{$slot}}
     @livewireScripts
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
 </html>

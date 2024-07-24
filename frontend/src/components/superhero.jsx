@@ -1,92 +1,77 @@
-import React from 'react'
-import antman from '../assets/images/superhero/antman.jpg';
-import avenger from '../assets/images/superhero/avenger.jpg';
-import batman from '../assets/images/superhero/batman.jpg';
-import robinhood from '../assets/images/superhero/robinhood.jpg';
-import spiderman from '../assets/images/superhero/spiderman-cover.jpg';
-import superman from '../assets/images/superhero/superman.jpg';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Superhero() {
-  return (
-    <div className='container-fluid superhero' id='superhero'>
-    <div className="container p-4 text-light ">
-      <h3 className=' text-warning text-center'>SUPERHERO
+    const [movies, setMovies] = useState([]);
 
-      </h3>
-      <div className="row">
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
+    useEffect(() => {
+        axios.get('https://api.themoviedb.org/3/tv/popular', {
+            params: {
+                api_key: '257443ce2715a86e96cc262188606431'
+            }
+        }).then((response) => {
+            console.log(response);
+            setMovies(response.data.results);
+        }).catch((error) => {
+            console.error('Error fetching data:', error);
+        });
+    }, []); // Empty dependency array to run effect only once
 
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={antman} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">antman</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
+    return (
+        <div className='container-fluid superhero' id='superhero'>
+            <div className="container p-4 text-light">
+                <h3 className='text-warning text-center'>SUPERHERO</h3>
+                <div className="row">
+                    {movies.map((result, index) => (
+                        <div className="col-lg-4 col-md-6 col-sm-12 mt-3" key={index}>
+                            <div className="card">
+                                <img src={`https://image.tmdb.org/t/p/w500/${result.poster_path}`} className="card-img-top" alt="Superhero Poster" />
+                                <div className="card-body">
+                                    {/* Using proper Bootstrap modal attributes */}
+                                    <a href="#" className="nav-link"
+                                        data-bs-toggle="modal"
+                                        data-bs-target={`#modal-${index}`}
+                                    >
+                                        <h5 type="button" className="card-title text-center">
+                                            {result.name}
+                                        </h5>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
 
-          </div>
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={avenger} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">avenger</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
-          </div>
-
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={batman} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">batman</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
-          </div>
-
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={robinhood} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">robinhood</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
-          </div>
-
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={spiderman} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">spiderman</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
-          </div>
-
-          <div className=" col-lg-4 col-md-6 col-sm-12 mt-3">
-              <div class="card" style={{width: '22rem'}}>
-                  <img src={superman} class="card-img-top" alt="..." style={{height:'400px'}}/>
-                  <div class="card-body">
-                      <h5 class="card-title">superman</h5>
-                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                      <a href="#" class="btn btn-primary">view</a>
-                  </div>
-              </div>
-          </div>
-
-
-      </div>
-    </div>
-  </div>
-  )
+            {/* Modal section */}
+            {movies.map((result, index) => (
+                <div key={index} className="modal fade" id={`modal-${index}`} tabIndex="-1" aria-labelledby={`modalLabel-${index}`} aria-hidden="true">
+                    <div className="modal-dialog">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title" id={`modalLabel-${index}`}>{result.name}</h5>
+                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div className="modal-body">
+                                <img src={`https://image.tmdb.org/t/p/w500/${result.backdrop_path}`} className="img-fluid" alt="Superhero Poster" />
+                                <hr />
+                                <h3>{result.name}</h3>
+                                <p>{result.overview}</p>
+                                {/* Add more details or content here if needed */}
+                            </div>
+                            <div className="modal-footer">
+                               <div className="row">
+                                <div className="col-12 text-center">Release Date: <b className="bg-primary">{result.first_air_date}</b></div>
+                                <div className="col-12 text-center"></div>
+                                <div className="col-12 text-center"></div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    );
 }
 
 export default Superhero;
